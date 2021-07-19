@@ -922,7 +922,7 @@ function menu() {
     text("OPTIONS", 500, 820);
 
     textSize(28);
-    text("DER SINGLEPLAYER HIGHSCORE LIEGT BEI " + localStorage.getItem("time1") + " SEKUNDEN", 500, 950);
+    text("DER SINGLEPLAYER HIGHSCORE LIEGT BEI " + localStorage.getItem("time") + " SEKUNDEN", 500, 950);
     strokeWeight(5);
     stroke(255, 0, 0);
     line(70, 960, 930, 960);
@@ -973,11 +973,9 @@ function singleplayer() {
     else {
         clearTimeout(powerupBoarder);
         ms = 0;
-        localStorage.setItem("time2", time);
-        get_time1 = parseInt(localStorage.getItem("time1"));
-        get_time2 = parseInt(localStorage.getItem("time2"));
-        if (get_time2 >= get_time1) {;
-            localStorage.setItem("time1", time);
+        let old_time = localStorage.getItem("time");
+        if (old_time == null || old_time < time) { 
+            localStorage.setItem("time", time);
         }
         
 
